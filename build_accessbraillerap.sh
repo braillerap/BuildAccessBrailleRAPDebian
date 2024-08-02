@@ -34,7 +34,13 @@ pip freeze > /home/builduser/dist/requirement_test.txt
 git pull
 git checkout $BRANCH_BUILD 
 
-tree -L 4 ./package
+
+
+# !! delete .gitignore !!
+ls -lah /home/builduser/AccessBrailleRAP/package/debian/accessbraillerap-debian/bin/.*
+rm /home/builduser/AccessBrailleRAP/package/debian/accessbraillerap-debian/bin/.*
+
+tree  -a /home/builduser/AccessBrailleRAP/package
 
 #printf "\e[1;34mBuild debug \e[0m\n"
 #npm run builddev
@@ -48,6 +54,7 @@ printf "\e[0mBuild finished\n"
 #npm run builddebian
  
  ls -la /home/builduser/AccessBrailleRAP/dist/*
+
 
  if [ $(find /home/builduser/AccessBrailleRAP/dist/ -name "accessbraillerap-debian.deb") ];
   then
