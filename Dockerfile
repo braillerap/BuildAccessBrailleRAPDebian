@@ -33,8 +33,8 @@ RUN apt install  -y python3-tk
 #RUN apt install python3-gi python3-gi-cairo 
 RUN apt install  -y xvfb
 RUN apt install  -y libcairo2 libcairo2-dev libgirepository1.0-dev
-RUN apt install  -y tcl
-RUN apt install  -y tree
+RUN apt install  -y tcl tree
+RUN apt install  -y git-extras lintian
 
 
 #setup nodejs 

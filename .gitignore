@@ -2,3 +2,5 @@ dist/accessbraillerap-debian
 dist/accessbraillerap-debian.deb
 dist/accessbraillerap-debian.deb.md5sum
 dist/requirement_test.txt
+dist/accessbraillerap-debian-*.deb
+dist/accessbraillerap-debian-*.deb.md5sum

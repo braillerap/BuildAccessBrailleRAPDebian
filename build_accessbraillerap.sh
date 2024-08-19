@@ -40,8 +40,8 @@ pip freeze > /home/builduser/dist/requirement_test.txt
 
 
 # !! delete .gitignore !!
-ls -lah /home/builduser/AccessBrailleRAP/package/debian/accessbraillerap-debian/bin/.*
-rm /home/builduser/AccessBrailleRAP/package/debian/accessbraillerap-debian/bin/.*
+#ls -lah /home/builduser/AccessBrailleRAP/package/debian/accessbraillerap-debian/bin/.*
+#rm /home/builduser/AccessBrailleRAP/package/debian/accessbraillerap-debian/bin/.*
 
 tree  -a /home/builduser/AccessBrailleRAP/package
 
@@ -59,13 +59,14 @@ printf "\e[0mBuild finished\n"
  ls -la /home/builduser/AccessBrailleRAP/dist/*
 
 
- if [ $(find /home/builduser/AccessBrailleRAP/dist/ -name "accessbraillerap-debian.deb") ];
+ if [ $(find /home/builduser/AccessBrailleRAP/dist/ -name "accessbraillerap-debian-*.deb") ];
   then
-    #ls -la /home/builduser/AccessBrailleRAP/build/
-    #ls -la /home/builduser/AccessBrailleRAP/
-    #ls -la /home/builduser/AccessBrailleRAP/dist/
-    #cp -r /home/builduser/AccessBrailleRAP/build/* /home/builduser/dist/
-    md5sum /home/builduser/AccessBrailleRAP/dist/accessbraillerap-debian.deb > /home/builduser/AccessBrailleRAP/dist/accessbraillerap-debian.deb.md5sum
+    
+    for f in /home/builduser/AccessBrailleRAP/dist/accessbraillerap-debian-*.deb
+    do
+        md5sum $f > $f.md5sum
+        sed -i -r "s/ .*\/(.+)/  \1/g" $f.md5sum
+    done
     cp -r /home/builduser/AccessBrailleRAP/dist/* /home/builduser/dist/
     printf "\e[0mCompilation: \e[1;32mSucceeded\n"
     printf "\n"
